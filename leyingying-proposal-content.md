@@ -27,11 +27,22 @@
 | 活动名称 | 描述 | 标签 |
 |----------|------|------|
 | Best Practice 交流 | 线上实时分享 AI 最佳实践案例，沉淀为组织内的可复用知识资产。如热门工具解析/论文解析/工程实践经验/ | ONLINE/公众号稿件 |
+>![alt text](<CleanShot 2026-03-19 at 14.27.25@2x.png>)
+
 | 医疗 × AI 热点 Agent | 前期：组织分享的形式，将X，Podcast，论文，公众号信息整合输出优质信息源；中期：搭建自动化稿件生产 Agent，定期输出医疗行业与 AI 实时热点深度内容。后期引入架构体系，观测阅读量/数据趋势，自动捕捉企业员工层/战略层/管理层关注的信息源 | AI AGENT/公众号稿件 |
+> ![alt text](IMG_2041.jpeg)
+
 | I/O 大会 | 对标 Google I/O 风格，定期汇聚内部 AI 实践成果，形成高密度知识输出节点。 | KEYNOTE EVENT |
+>![alt text](image.png)
+
 | AI 步道者播客 | 采访内部 AI 实践者，制作播客内容，建立有温度的知识传播渠道。 | ONLINE/公众号稿件/PODCAST |
+>![alt text](IMG_2040.jpeg)
+
 | AI Side Project 沙龙 | 定期组织 AI 副项目分享，激活个人创造力，构建跨部门的创新连接。 | SALON/公众号稿件 |
+>![alt text](<CleanShot 2026-03-19 at 14.26.42@2x.png>)
+
 | 线下主题培训 | 面向不同技能层级设计差异化培训内容，从工具使用到系统思维全覆盖。 | TRAINING/公众号稿件 |
+> ![alt text](<CleanShot 2026-03-19 at 14.29.49@2x.png>)
 
 ### COLLABORATION · SSME多部门协作
 
@@ -49,6 +60,7 @@
 | 高价值展会| WAIC/Google Dev Festval/Cursor Meetsup| Conference |
 | 创客松 Hackathon | 48h 高密度创造，将内部 AI 能力转化为可演示的产品原型与解决方案。 | HACKATHON |
 | 技能交流会 | 跨公司、跨行业的 AI 技能共享活动，拓展外部人脉网络与方法论视野。 | NETWORKING |
+
 | 主题开放麦 | 低门槛、高包容度的创意表达场所，让每一个 AI 实践故事都值得被听见。 | OPEN MIC |
 
 ---
