@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>乐创营 Core Member 加入策划案</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #070b14;
+    --bg2: #0d1424;
+    --card: #111827;
+    --card2: #161f30;
+    --border: rgba(99,179,255,0.12);
+    --accent1: #38bdf8;
+    --accent2: #a78bfa;
+    --accent3: #34d399;
+    --accent4: #fb923c;
+    --text: #f1f5f9;
+    --muted: #94a3b8;
+    --gold: #f59e0b;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Noto Sans SC', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── NOISE OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.5;
+  }
+
+  /* ── BACKGROUND ORBS ── */
+  .orb {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(120px);
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.18;
+  }
+  .orb1 { width: 600px; height: 600px; background: var(--accent2); top: -200px; right: -100px; animation: drift1 18s ease-in-out infinite; }
+  .orb2 { width: 400px; height: 400px; background: var(--accent1); bottom: 20%; left: -150px; animation: drift2 22s ease-in-out infinite; }
+  .orb3 { width: 300px; height: 300px; background: var(--accent3); bottom: -100px; right: 20%; animation: drift1 15s ease-in-out infinite reverse; }
+
+  @keyframes drift1 { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(40px, 60px) scale(1.1); } }
+  @keyframes drift2 { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(-30px, 50px) scale(0.95); } }
+
+  /* ── LAYOUT ── */
+  .wrap {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 2rem 6rem;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 7rem 0 5rem;
+    text-align: center;
+    animation: fadeUp 0.9s ease both;
+  }
+  .hero-tag {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    color: var(--accent3);
+    border: 1px solid rgba(52,211,153,0.3);
+    padding: 0.3em 1em;
+    border-radius: 2em;
+    margin-bottom: 2rem;
+    background: rgba(52,211,153,0.06);
+  }
+  .hero h1 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(2.6rem, 6vw, 4.2rem);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.2rem;
+    background: linear-gradient(135deg, #e2e8f0 0%, var(--accent1) 50%, var(--accent2) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero-sub {
+    font-size: 1.05rem;
+    color: var(--muted);
+    max-width: 520px;
+    margin: 0 auto 3rem;
+    font-weight: 300;
+  }
+  .hero-meta {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  .hero-meta span {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 0.4em;
+  }
+  .hero-meta span::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent1);
+    display: inline-block;
+    animation: pulse 2s ease infinite;
+  }
+  @keyframes pulse { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(0.7); } }
+
+  /* ── DIVIDER ── */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border), var(--accent1) 40%, var(--accent2) 60%, var(--border), transparent);
+    margin: 3rem 0;
+    opacity: 0.6;
+  }
+
+  /* ── SECTION LABEL ── */
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent1);
+    margin-bottom: 0.6rem;
+    opacity: 0.8;
+  }
+  .section-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    color: #f1f5f9;
+  }
+
+  /* ── CORE STRUCTURE DIAGRAM ── */
+  .core-diagram {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2.5rem;
+    margin-bottom: 1.5rem;
+    animation: fadeUp 0.9s ease 0.15s both;
+  }
+  .diagram-row {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr auto 1fr;
+    gap: 0;
+    align-items: center;
+    margin-bottom: 0;
+  }
+  .diagram-node {
+    background: var(--card2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.2rem 1rem;
+    text-align: center;
+    position: relative;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+  .diagram-node:hover { border-color: rgba(99,179,255,0.4); transform: translateY(-3px); }
+  .diagram-node.center {
+    background: linear-gradient(135deg, rgba(56,189,248,0.12), rgba(167,139,250,0.12));
+    border-color: rgba(167,139,250,0.35);
+  }
+  .diagram-node .icon { font-size: 1.5rem; margin-bottom: 0.4rem; }
+  .diagram-node .label {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #cbd5e1;
+    display: block;
+  }
+  .diagram-node .sub {
+    font-size: 0.65rem;
+    color: #94a3b8;
+    margin-top: 0.2rem;
+    line-height: 1.4;
+  }
+  .arrow {
+    font-size: 1.2rem;
+    color: var(--accent1);
+    text-align: center;
+    opacity: 0.6;
+    padding: 0 0.5rem;
+  }
+
+  /* ── VISION BLOCK ── */
+  .vision-block {
+    border-left: 3px solid var(--accent2);
+    padding: 1.2rem 1.5rem;
+    background: rgba(167,139,250,0.05);
+    border-radius: 0 8px 8px 0;
+    margin: 2rem 0;
+    font-size: 0.95rem;
+    color: #cbd5e1;
+    line-height: 1.8;
+    animation: fadeUp 0.9s ease 0.2s both;
+  }
+
+  /* ── ACTIVITY GRID ── */
+  .activities-section { animation: fadeUp 0.9s ease 0.25s both; }
+  .track-group { margin-bottom: 2.5rem; }
+  .track-header {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 1.2rem;
+  }
+  .track-badge {
+    font-size: 0.65rem;
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.12em;
+    padding: 0.3em 0.9em;
+    border-radius: 2em;
+    font-weight: 600;
+  }
+  .badge-internal { background: rgba(56,189,248,0.12); color: var(--accent1); border: 1px solid rgba(56,189,248,0.25); }
+  .badge-collab   { background: rgba(167,139,250,0.12); color: var(--accent2); border: 1px solid rgba(167,139,250,0.25); }
+  .badge-external { background: rgba(52,211,153,0.12); color: var(--accent3); border: 1px solid rgba(52,211,153,0.25); }
+
+  .track-name {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #e2e8f0;
+  }
+
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1rem;
+  }
+
+  .activity-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.3rem;
+    transition: all 0.3s ease;
+    cursor: default;
+    position: relative;
+    overflow: hidden;
+  }
+  .activity-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .activity-card.c1::before { background: linear-gradient(90deg, var(--accent1), transparent); }
+  .activity-card.c2::before { background: linear-gradient(90deg, var(--accent2), transparent); }
+  .activity-card.c3::before { background: linear-gradient(90deg, var(--accent3), transparent); }
+  .activity-card:hover { border-color: rgba(99,179,255,0.28); transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.4); }
+  .activity-card:hover::before { opacity: 1; }
+
+  .card-icon { font-size: 1.6rem; margin-bottom: 0.7rem; }
+  .card-title {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #e2e8f0;
+    margin-bottom: 0.4rem;
+  }
+  .card-desc {
+    font-size: 0.78rem;
+    color: #94a3b8;
+    line-height: 1.6;
+  }
+  .card-tag {
+    display: inline-block;
+    margin-top: 0.7rem;
+    font-size: 0.62rem;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--accent3);
+    background: rgba(52,211,153,0.08);
+    border: 1px solid rgba(52,211,153,0.2);
+    padding: 0.2em 0.6em;
+    border-radius: 4px;
+    letter-spacing: 0.08em;
+  }
+
+  /* ── MY ROLE SECTION ── */
+  .role-section {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2.5rem;
+    margin-bottom: 2rem;
+    animation: fadeUp 0.9s ease 0.3s both;
+  }
+  .role-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+  @media (max-width: 600px) { .role-grid { grid-template-columns: 1fr; } .diagram-row { grid-template-columns: 1fr; } .arrow { display: none; } }
+  .role-item {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+  .role-num {
+    flex-shrink: 0;
+    width: 28px; height: 28px;
+    background: linear-gradient(135deg, var(--accent1), var(--accent2));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--bg);
+    margin-top: 2px;
+  }
+  .role-item h4 { font-size: 0.88rem; font-weight: 500; color: #e2e8f0; margin-bottom: 0.25rem; }
+  .role-item p { font-size: 0.78rem; color: #94a3b8; line-height: 1.6; }
+
+  /* ── ROADMAP ── */
+  .roadmap-section { animation: fadeUp 0.9s ease 0.35s both; }
+  .timeline {
+    position: relative;
+    padding-left: 2rem;
+    margin-top: 1.5rem;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 8px; bottom: 8px;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--accent1), var(--accent2), var(--accent3));
+    opacity: 0.4;
+  }
+  .timeline-item {
+    position: relative;
+    margin-bottom: 2rem;
+  }
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -2rem;
+    top: 8px;
+    width: 9px; height: 9px;
+    border-radius: 50%;
+    background: var(--accent1);
+    border: 2px solid var(--bg);
+    box-shadow: 0 0 0 2px rgba(56,189,248,0.3);
+  }
+  .timeline-item:nth-child(2)::before { background: var(--accent2); box-shadow: 0 0 0 2px rgba(167,139,250,0.3); }
+  .timeline-item:nth-child(3)::before { background: var(--accent3); box-shadow: 0 0 0 2px rgba(52,211,153,0.3); }
+  .timeline-period {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--accent1);
+    letter-spacing: 0.1em;
+    margin-bottom: 0.3rem;
+  }
+  .timeline-item:nth-child(2) .timeline-period { color: var(--accent2); }
+  .timeline-item:nth-child(3) .timeline-period { color: var(--accent3); }
+  .timeline-title {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #e2e8f0;
+    margin-bottom: 0.5rem;
+  }
+  .timeline-list {
+    list-style: none;
+  }
+  .timeline-list li {
+    font-size: 0.8rem;
+    color: #94a3b8;
+    line-height: 1.7;
+    padding-left: 1em;
+    position: relative;
+  }
+  .timeline-list li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: rgba(56,189,248,0.5);
+    font-size: 0.7rem;
+  }
+
+  /* ── VALUE METRICS ── */
+  .metrics-section { animation: fadeUp 0.9s ease 0.4s both; }
+  .metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+  @media (max-width: 600px) { .metrics-grid { grid-template-columns: 1fr; } }
+  .metric-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem 1.2rem;
+    text-align: center;
+    transition: all 0.3s;
+  }
+  .metric-card:hover { border-color: rgba(245,158,11,0.4); transform: translateY(-3px); }
+  .metric-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 1;
+    margin-bottom: 0.4rem;
+    background: linear-gradient(135deg, var(--gold), var(--accent4));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .metric-label {
+    font-size: 0.75rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* ── CTA / CLOSING ── */
+  .cta-section {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: linear-gradient(135deg, rgba(56,189,248,0.05), rgba(167,139,250,0.05));
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    animation: fadeUp 0.9s ease 0.45s both;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(167,139,250,0.08) 0%, transparent 70%);
+  }
+  .cta-section h2 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 0.8rem;
+    color: #f1f5f9;
+    position: relative;
+  }
+  .cta-section p {
+    font-size: 0.9rem;
+    color: var(--muted);
+    max-width: 440px;
+    margin: 0 auto 2rem;
+    position: relative;
+    line-height: 1.8;
+  }
+  .cta-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--accent2);
+    border: 1px solid rgba(167,139,250,0.35);
+    padding: 0.6em 1.4em;
+    border-radius: 2em;
+    background: rgba(167,139,250,0.08);
+    letter-spacing: 0.08em;
+    position: relative;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── SCROLLBAR ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: rgba(99,179,255,0.2); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
+<div class="orb orb3"></div>
+
+<div class="wrap">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-tag">JOIN APPLICATION · CORE MEMBER</div>
+    <h1>乐创营 Core Team<br>加入策划案</h1>
+    <p class="hero-sub">以 AI 为工具，以创造为燃料——<br>在医疗科技与 AI 的交叉地带，持续生长。</p>
+    <div class="hero-meta">
+      <span>申请人：健安</span>
+      <span>所属：质量与技术部 · LuZhi</span>
+      <span>方向：AI Engineer × Product Owner</span>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- SECTION 1: 核心结构 -->
+  <section style="animation: fadeUp 0.9s ease 0.1s both;">
+    <div class="section-label">01 / ECOSYSTEM</div>
+    <div class="section-title">乐创营生态结构</div>
+
+    <div class="core-diagram">
+      <div class="diagram-row">
+        <div class="diagram-node">
+          <div class="icon">🏢</div>
+          <span class="label">业务端</span>
+          <div class="sub">出需求<br>定方向</div>
+        </div>
+        <div class="arrow">⟷</div>
+        <div class="diagram-node center">
+          <div class="icon">🌱</div>
+          <span class="label">创造营</span>
+          <div class="sub">底层能力建设<br>专家 Know-how</div>
+        </div>
+        <div class="arrow">⟷</div>
+        <div class="diagram-node">
+          <div class="icon">✂️</div>
+          <span class="label">乐创营 Core</span>
+          <div class="sub">浇灌与修剪<br>运营与策划</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="vision-block">
+      乐创营并非单纯的兴趣社团，而是连接业务需求、内部技术能力与外部生态的 <strong style="color: var(--accent1);">三位一体枢纽</strong>。
+      Core Team 扮演"浇灌者"与"修剪者"的双重角色——既要让知识在组织内自由流动，也要保持活动的质量与节奏感。
+      对我而言，这是将 AI 工程实践、内容创作与跨部门协作整合为一体的理想场域。
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SECTION 2: 活动矩阵 -->
+  <section class="activities-section">
+    <div class="section-label">02 / ACTIVITY MATRIX</div>
+    <div class="section-title">活动生态全景</div>
+
+    <!-- 内部活动 -->
+    <div class="track-group">
+      <div class="track-header">
+        <span class="track-badge badge-internal">INTERNAL</span>
+        <span class="track-name">内部活动体系</span>
+      </div>
+      <div class="cards-grid">
+        <div class="activity-card c1">
+          <div class="card-icon">🎙️</div>
+          <div class="card-title">I/O 大会</div>
+          <div class="card-desc">对标 Google I/O 风格，定期汇聚内部 AI 实践成果，形成高密度知识输出节点。</div>
+          <span class="card-tag">KEYNOTE EVENT</span>
+        </div>
+        <div class="activity-card c1">
+          <div class="card-icon">🎧</div>
+          <div class="card-title">AI 步道者播客</div>
+          <div class="card-desc">采访内部 AI 实践者，制作播客内容，建立有温度的知识传播渠道。</div>
+          <span class="card-tag">PODCAST</span>
+        </div>
+        <div class="activity-card c1">
+          <div class="card-icon">🧪</div>
+          <div class="card-title">AI Side Project 沙龙</div>
+          <div class="card-desc">定期组织 AI 副项目分享，激活个人创造力，构建跨部门的创新连接。</div>
+          <span class="card-tag">SALON</span>
+        </div>
+        <div class="activity-card c1">
+          <div class="card-icon">💡</div>
+          <div class="card-title">Best Practice 交流</div>
+          <div class="card-desc">线上实时分享 AI 最佳实践案例，沉淀为组织内的可复用知识资产。</div>
+          <span class="card-tag">ONLINE</span>
+        </div>
+        <div class="activity-card c1">
+          <div class="card-icon">🎓</div>
+          <div class="card-title">线下主题培训</div>
+          <div class="card-desc">面向不同技能层级设计差异化培训内容，从工具使用到系统思维全覆盖。</div>
+          <span class="card-tag">TRAINING</span>
+        </div>
+        <div class="activity-card c1">
+          <div class="card-icon">📰</div>
+          <div class="card-title">医疗 × AI 热点 Agent</div>
+          <div class="card-desc">搭建自动化稿件生产 Agent，定期输出医疗行业与 AI 实时热点深度内容。</div>
+          <span class="card-tag">AI AGENT</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 合作活动 -->
+    <div class="track-group">
+      <div class="track-header">
+        <span class="track-badge badge-collab">COLLABORATION</span>
+        <span class="track-name">跨界合作项目</span>
+      </div>
+      <div class="cards-grid">
+        <div class="activity-card c2">
+          <div class="card-icon">⚔️</div>
+          <div class="card-title">AI 观点辩论赛</div>
+          <div class="card-desc">联合 Young Pie，围绕 AI 时代热点议题展开对抗性思辨，激发深度讨论。</div>
+          <span class="card-tag">YOUNG PIE</span>
+        </div>
+        <div class="activity-card c2">
+          <div class="card-icon">🏭</div>
+          <div class="card-title">LeanClub 企业拜访</div>
+          <div class="card-desc">与 LeanClub 协同开展标杆企业参访，对接一线 AI 落地实践经验。</div>
+          <span class="card-tag">LEANCLUB</span>
+        </div>
+        <div class="activity-card c2">
+          <div class="card-icon">🎓</div>
+          <div class="card-title">校企合作项目</div>
+          <div class="card-desc">建立高校合作渠道，引入学术前沿视角，同时为企业输送年轻创造力。</div>
+          <span class="card-tag">ACADEMIA</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 外部活动 -->
+    <div class="track-group">
+      <div class="track-header">
+        <span class="track-badge badge-external">EXTERNAL</span>
+        <span class="track-name">外部生态参与</span>
+      </div>
+      <div class="cards-grid">
+        <div class="activity-card c3">
+          <div class="card-icon">🏆</div>
+          <div class="card-title">AI 主题竞赛</div>
+          <div class="card-desc">组织团队参与行业顶级 AI 竞赛，以赛促练，提升品牌影响力。</div>
+          <span class="card-tag">COMPETITION</span>
+        </div>
+        <div class="activity-card c3">
+          <div class="card-icon">🛠️</div>
+          <div class="card-title">创客松 Hackathon</div>
+          <div class="card-desc">48h 高密度创造，将内部 AI 能力转化为可演示的产品原型与解决方案。</div>
+          <span class="card-tag">HACKATHON</span>
+        </div>
+        <div class="activity-card c3">
+          <div class="card-icon">🤝</div>
+          <div class="card-title">技能交流会</div>
+          <div class="card-desc">跨公司、跨行业的 AI 技能共享活动，拓展外部人脉网络与方法论视野。</div>
+          <span class="card-tag">NETWORKING</span>
+        </div>
+        <div class="activity-card c3">
+          <div class="card-icon">🎤</div>
+          <div class="card-title">主题开放麦</div>
+          <div class="card-desc">低门槛、高包容度的创意表达场所，让每一个 AI 实践故事都值得被听见。</div>
+          <span class="card-tag">OPEN MIC</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SECTION 3: 我能贡献什么 -->
+  <section class="role-section">
+    <div class="section-label">03 / MY CONTRIBUTION</div>
+    <div class="section-title">我能为 Core Team 带来什么</div>
+    <div class="role-grid">
+      <div class="role-item">
+        <div class="role-num">1</div>
+        <div>
+          <h4>AI Agent 工程能力</h4>
+          <p>具备完整的 Agent 系统搭建经验（OpenClaw、R·Agent），可直接落地「医疗热点稿件 Agent」等自动化内容工具，将人工运营成本降低 70%+。</p>
+        </div>
+      </div>
+      <div class="role-item">
+        <div class="role-num">2</div>
+        <div>
+          <h4>内容创作 × 小红书实战</h4>
+          <p>有 AI 工具建设过程的内容化经验，能将技术实践转化为大众可读的叙事，为播客、稿件、社群传播提供稳定产出。</p>
+        </div>
+      </div>
+      <div class="role-item">
+        <div class="role-num">3</div>
+        <div>
+          <h4>跨部门 Product Owner 视角</h4>
+          <p>横跨 QT / ISE / DTI / MP 的协作经验，擅长需求拆解与优先级判断，可担任内外部活动的策划统筹与协调节点。</p>
+        </div>
+      </div>
+      <div class="role-item">
+        <div class="role-num">4</div>
+        <div>
+          <h4>医疗 AI 领域专深知识</h4>
+          <p>长期深耕医疗器械 AI 落地（CER / PTR 文档自动化），在「医疗 × AI」热点解读、校企对接等活动中具备独特的专业背书。</p>
+        </div>
+      </div>
+      <div class="role-item">
+        <div class="role-num">5</div>
+        <div>
+          <h4>个人 AI 生产力系统</h4>
+          <p>自建多 Agent 个人效率系统（AWS + Discord + Airtable），能为 Core Team 提供低成本、高可用的运营工具底座。</p>
+        </div>
+      </div>
+      <div class="role-item">
+        <div class="role-num">6</div>
+        <div>
+          <h4>哲学与人文视角</h4>
+          <p>关注存在主义心理学、语言哲学与 AI 伦理，能为辩论赛、开放麦等活动注入更深层的思想维度与讨论质量。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: 三阶段计划 -->
+  <section class="roadmap-section">
+    <div class="section-label">04 / ROADMAP</div>
+    <div class="section-title">加入后的三阶段成长路径</div>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-period">PHASE 01 · 入营后 1–2 月</div>
+        <div class="timeline-title">熟悉生态，快速交付</div>
+        <ul class="timeline-list">
+          <li>深度了解乐创营现有活动节奏与成员协作方式</li>
+          <li>主动认领并完成 1 个具体任务（如一期播客选题策划或一次沙龙组织）</li>
+          <li>搭建「医疗 × AI 热点」自动化稿件 Agent 的 MVP 原型</li>
+        </ul>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-period">PHASE 02 · 3–5 月</div>
+        <div class="timeline-title">建立专属贡献模块</div>
+        <ul class="timeline-list">
+          <li>主导一场 AI Side Project 沙龙（以 R·Agent / OpenClaw 实战为内容主轴）</li>
+          <li>与 Young Pie 团队推进 AI 辩论赛选题与赛制设计</li>
+          <li>为 I/O 大会贡献一个完整的议题方案或技术演讲</li>
+          <li>将稿件 Agent 正式上线，输出第一批医疗 AI 内容</li>
+        </ul>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-period">PHASE 03 · 6 月+</div>
+        <div class="timeline-title">连接内外，扩大影响</div>
+        <ul class="timeline-list">
+          <li>参与或组队参加 1 场外部 AI 竞赛 / 创客松，代表乐创营展示战果</li>
+          <li>推动校企合作落地，对接 1 个高校合作节点</li>
+          <li>协助 Core Team 系统化沉淀活动方法论，形成可复用的运营 SOP</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SECTION 5: 价值量化 -->
+  <section class="metrics-section">
+    <div class="section-label">05 / EXPECTED VALUE</div>
+    <div class="section-title">预期贡献量化</div>
+    <div class="metrics-grid">
+      <div class="metric-card">
+        <div class="metric-num">12+</div>
+        <div class="metric-label">年度活动策划<br>贡献场次目标</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-num">70%</div>
+        <div class="metric-label">稿件生产自动化率<br>（Agent 落地后）</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-num">3×</div>
+        <div class="metric-label">跨部门协作渠道<br>（QT / ISE / DTI）</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <h2>用创造定义参与</h2>
+    <p>我希望成为乐创营中那个既能写代码、又能写故事、<br>还能浇灌生态的那个人。<br>不只是参与者，而是建设者。</p>
+    <span class="cta-tag">✦ 期待成为乐创营 Core Member</span>
+  </div>
+
+</div>
+</body>
+</html>
