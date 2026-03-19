@@ -64,6 +64,26 @@
     .thumb img{width:100%;height:100%;object-fit:cover}
     .thumb.active{border-color:var(--brand);box-shadow:0 0 0 2px rgba(37,99,235,.16) inset}
 
+  
+    .eco-wrap{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:stretch}
+    @media(max-width:980px){.eco-wrap{grid-template-columns:1fr}}
+    .eco-graph{position:relative;border:1px solid var(--line);border-radius:14px;background:#fff;min-height:280px;overflow:hidden}
+    .eco-bg{position:absolute;inset:0;background:radial-gradient(circle at 20% 20%,rgba(37,99,235,.08),transparent 45%),radial-gradient(circle at 80% 70%,rgba(124,58,237,.08),transparent 45%)}
+    .eco-node{position:absolute;transform:translate(-50%,-50%);width:170px;padding:10px;border:1px solid var(--line);border-radius:12px;background:#fff;box-shadow:0 8px 24px rgba(37,99,235,.08);text-align:center;cursor:pointer;transition:.2s}
+    .eco-node:hover{border-color:#bfd3f7;transform:translate(-50%,-50%) scale(1.03)}
+    .eco-node b{display:block;font-size:14px}
+    .eco-node span{font-size:12px;color:#64748b}
+    .n1{left:22%;top:52%}.n2{left:50%;top:22%}.n3{left:78%;top:52%}
+    .eco-lines{position:absolute;inset:0;pointer-events:none}
+    .eco-tip{border:1px solid var(--line);border-radius:12px;background:#fff;padding:14px}
+    .eco-tip h4{margin:0 0 8px;font-size:16px}
+    .eco-tip p{margin:0;color:#475569;line-height:1.75}
+    .cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+    @media(max-width:980px){.cards3{grid-template-columns:1fr}}
+    .idea{border:1px solid var(--line);border-radius:12px;background:#fff;padding:12px}
+    .idea b{display:block;font-size:14px;margin-bottom:4px}
+    .idea p{margin:0;color:#475569;font-size:13px;line-height:1.7}
+
   </style>
 </head>
 <body>
@@ -71,18 +91,30 @@
   <section class="hero">
     <div class="kicker">JOIN APPLICATION · CORE TEAM</div>
     <h1>乐创营 Core Team 加入策划案</h1>
-    <div class="meta">申请人：健安 · 质量与技术部 LuZhi · 方向：AI Engineer × Product Owner</div>
-    <div class="highlight">我希望成为乐创营中那个既能写代码、又能写故事、还能浇灌生态的参与者和建设者。</div>
+        <div class="highlight">我希望成为乐创营中那个既能写代码、又能写故事、还能浇灌生态的参与者和建设者。</div>
   </section>
 
-  <section class="section">
-    <h2>01 / 乐创营生态结构</h2>
-    <div class="sub">核心三角关系：业务端（出需求，定方向）/ 创造营（底层能力建设，专家 Know-how）/ 乐创营 Core（浇灌与修剪，运营与策划）</div>
-    <div class="text">
-      <h3>结构说明（vision-block）</h3>
-      <p>乐创营并非单纯的兴趣社团，而是连接业务需求、内部技术能力与外部生态的三位一体枢纽。Core Team 扮演“浇灌者”与“修剪者”的双重角色——既要让知识在组织内自由流动，也要保持活动的质量与节奏感。对我而言，这是将 AI 工程实践、内容创作与跨部门协作整合为一体的理想场域。</p>
+  
+    <div class="sub">核心三角关系可视化：业务端（需求）↔ 创造营（能力）↔ 乐创营 Core（运营策划）</div>
+    <div class="eco-wrap">
+      <div class="eco-graph">
+        <div class="eco-bg"></div>
+        <svg class="eco-lines" viewBox="0 0 100 100" preserveAspectRatio="none">
+          <defs><marker id="arr" markerWidth="6" markerHeight="6" refX="4.5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#94a3b8"/></marker></defs>
+          <path d="M25 52 Q38 38 50 24" stroke="#94a3b8" stroke-width="0.7" fill="none" marker-end="url(#arr)"/>
+          <path d="M50 24 Q62 38 75 52" stroke="#94a3b8" stroke-width="0.7" fill="none" marker-end="url(#arr)"/>
+          <path d="M75 52 Q50 74 25 52" stroke="#94a3b8" stroke-width="0.7" fill="none" marker-end="url(#arr)"/>
+        </svg>
+        <div class="eco-node n1" data-eco="业务端"><b>业务端</b><span>出需求 · 定方向</span></div>
+        <div class="eco-node n2" data-eco="创造营"><b>创造营</b><span>底层能力建设 · Know-how</span></div>
+        <div class="eco-node n3" data-eco="乐创营 Core"><b>乐创营 Core</b><span>浇灌与修剪 · 运营策划</span></div>
+      </div>
+      <div class="eco-tip" id="ecoTip">
+        <h4>结构说明（vision-block）</h4>
+        <p>乐创营并非单纯兴趣社团，而是连接业务需求、内部技术能力与外部生态的三位一体枢纽。Core Team 同时承担“浇灌者”与“修剪者”角色，让知识流动并保持节奏与质量。</p>
+      </div>
     </div>
-  </section>
+
 
     <section class="section">
     <h2>02 / 活动生态全景</h2>
@@ -97,15 +129,21 @@
       </div>
     </div>
 
-    <div class="text list" style="margin-top:14px">
+    <div class="text" style="margin-top:14px">
       <h3>COLLABORATION · SSME多部门协作</h3>
-      <p>AI 观点辩论赛：联合 Young Pie，围绕 AI 时代热点议题展开讨论，引发关注与思考。（YOUNG PIE）</p>
-      <p>LeanClub 企业拜访：协同开展标杆企业参访，对接一线 AI 落地实践经验。（LEANCLUB）</p>
-      <p>校企合作项目：建立高校合作渠道，引入学术前沿视角，同时输送年轻创造力。（ACADEMIA）</p>
+      <div class="cards3" style="margin-top:10px">
+        <div class="idea"><b>AI 观点辩论赛</b><p>联合 Young Pie，围绕 AI 热点议题展开讨论，引发关注与思考。<br>标签：YOUNG PIE</p></div>
+        <div class="idea"><b>LeanClub 企业拜访</b><p>协同开展标杆企业参访，对接一线 AI 落地实践经验。<br>标签：LEANCLUB</p></div>
+        <div class="idea"><b>校企合作项目</b><p>建立高校合作渠道，引入学术前沿视角，同时输送年轻创造力。<br>标签：ACADEMIA</p></div>
+      </div>
     </div>
-    <div class="text list" style="margin-top:10px">
+    <div class="text" style="margin-top:10px">
       <h3>EXTERNAL · 外部生态参与</h3>
-      <p>官方 AI 主题竞赛（COMPETITION） / 高价值展会（Conference） / 创客松 Hackathon（HACKATHON） / 技能交流会（NETWORKING） / 主题开放麦（OPEN MIC）。</p>
+      <div class="cards3" style="margin-top:10px">
+        <div class="idea"><b>官方AI主题竞赛</b><p>以赛促练，提升成员 knowhow 与企业影响力。<br>标签：COMPETITION</p></div>
+        <div class="idea"><b>高价值展会 / 创客松</b><p>WAIC / DevFest / Hackathon：高密度实践与展示。<br>标签：CONFERENCE / HACKATHON</p></div>
+        <div class="idea"><b>技能交流会 / 开放麦</b><p>跨行业技能共享与低门槛表达，拓展方法论视野。<br>标签：NETWORKING / OPEN MIC</p></div>
+      </div>
     </div>
   </section>
 
@@ -188,6 +226,17 @@
   window.addEventListener('keydown', (e)=>{
     if(e.key==='ArrowRight'){ idx = (idx+1)%DATA.length; render(); }
     if(e.key==='ArrowLeft'){ idx = (idx-1+DATA.length)%DATA.length; render(); }
+  });
+
+  const ecoMap = {
+    '业务端':'业务端负责提出真实问题与业务目标，是活动选题和价值验证的起点。',
+    '创造营':'创造营负责沉淀方法与底层能力，把知识转成可复用的组织资产。',
+    '乐创营 Core':'Core 负责运营策划与节奏控制，连接需求与能力并形成持续输出。'
+  };
+  const tip = document.getElementById('ecoTip');
+  document.querySelectorAll('.eco-node').forEach(n=>{
+    n.addEventListener('mouseenter', ()=>{ const k=n.getAttribute('data-eco'); if(tip){ tip.innerHTML = `<h4>${k}</h4><p>${ecoMap[k]||''}</p>`; } });
+    n.addEventListener('click', ()=>{ const k=n.getAttribute('data-eco'); if(tip){ tip.innerHTML = `<h4>${k}</h4><p>${ecoMap[k]||''}</p>`; } });
   });
 })();
 </script>
