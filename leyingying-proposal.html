@@ -302,6 +302,67 @@
     letter-spacing: 0.08em;
   }
 
+
+  /* ── CASE GALLERY (实测案例) ── */
+  .case-section {
+    margin-top: 1.6rem;
+    padding: 1.6rem;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: rgba(15, 23, 42, 0.38);
+  }
+  .case-title {
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: #e2e8f0;
+    margin-bottom: 0.35rem;
+  }
+  .case-sub {
+    font-size: 0.76rem;
+    color: var(--muted);
+    margin-bottom: 1rem;
+  }
+  .case-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 0.9rem;
+  }
+  .case-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .case-media {
+    aspect-ratio: 16/10;
+    background: #0b1220;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    border-bottom: 1px solid rgba(148,163,184,0.12);
+  }
+  .case-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 8px;
+  }
+  .case-meta {
+    padding: 0.7rem 0.85rem 0.8rem;
+  }
+  .case-meta h5 {
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: #e2e8f0;
+    margin-bottom: 0.25rem;
+  }
+  .case-meta p {
+    font-size: 0.7rem;
+    color: #94a3b8;
+    line-height: 1.5;
+  }
+
   /* ── MY ROLE SECTION ── */
   .role-section {
     background: var(--card);
@@ -609,7 +670,40 @@
       </div>
     </div>
 
-    <!-- 合作活动 -->
+
+    <div class="case-section">
+      <div class="case-title">实测项目案例展示（可直接替换图片）</div>
+      <div class="case-sub">用于领导/协作方快速理解“活动形态 + 实际产出”。图片保持原始比例，不做过度放大。</div>
+      <div class="case-grid">
+        <article class="case-card">
+          <div class="case-media"><img src="assets/cases/best-practice.png" alt="Best Practice 交流案例" loading="lazy"></div>
+          <div class="case-meta"><h5>Best Practice 交流</h5><p>线上分享与案例沉淀：形成可复用知识资产。</p></div>
+        </article>
+        <article class="case-card">
+          <div class="case-media"><img src="assets/cases/medical-agent.jpeg" alt="医疗 AI 热点 Agent 案例" loading="lazy"></div>
+          <div class="case-meta"><h5>医疗 × AI 热点 Agent</h5><p>热点聚合与自动化稿件雏形，支撑持续内容输出。</p></div>
+        </article>
+        <article class="case-card">
+          <div class="case-media"><img src="assets/cases/io-event.png" alt="I/O 大会案例" loading="lazy"></div>
+          <div class="case-meta"><h5>I/O 大会</h5><p>高密度成果展示：对齐战略视角与组织传播。</p></div>
+        </article>
+        <article class="case-card">
+          <div class="case-media"><img src="assets/cases/podcast.jpeg" alt="AI 步道者播客案例" loading="lazy"></div>
+          <div class="case-meta"><h5>AI 步道者播客</h5><p>实践者访谈内容化，提升组织内部影响力。</p></div>
+        </article>
+        <article class="case-card">
+          <div class="case-media"><img src="assets/cases/side-project.png" alt="AI Side Project 沙龙案例" loading="lazy"></div>
+          <div class="case-meta"><h5>AI Side Project 沙龙</h5><p>跨部门创意连接，沉淀可复用副项目方法。</p></div>
+        </article>
+        <article class="case-card">
+          <div class="case-media"><img src="assets/cases/training.png" alt="线下主题培训案例" loading="lazy"></div>
+          <div class="case-meta"><h5>线下主题培训</h5><p>分层培训设计：从工具到系统思维的能力建设。</p></div>
+        </article>
+      </div>
+    </div>
+
+
+        <!-- 合作活动 -->
     <div class="track-group">
       <div class="track-header">
         <span class="track-badge badge-collab">COLLABORATION</span>
